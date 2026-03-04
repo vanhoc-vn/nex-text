@@ -1,0 +1,370 @@
+/* Shared auth styles for Login.js & Register.js (no external libs) */
+
+:root {
+  --auth-slate-900: #0f172a;
+  --auth-slate-700: #334155;
+  --auth-slate-600: #475569;
+  --auth-slate-500: #64748b;
+  --auth-slate-200: #e2e8f0;
+  --auth-slate-100: #f1f5f9;
+  --auth-white: #ffffff;
+
+  --auth-sky-600: #0284c7;
+  --auth-sky-700: #0369a1;
+  --auth-indigo-500: #6366f1;
+  --auth-indigo-600: #4f46e5;
+  --auth-purple-500: #a855f7;
+
+  --auth-radius: 16px;
+  --auth-shadow-sm: 0 8px 24px rgba(2, 6, 23, 0.06);
+  --auth-shadow-md: 0 14px 38px rgba(2, 6, 23, 0.10);
+  --auth-ring: 0 0 0 4px rgba(99, 102, 241, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.authPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+  position: relative;
+  overflow: hidden;
+  color: var(--auth-slate-900);
+  background: var(--auth-white);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.authBg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.authBg::before,
+.authBg::after {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.75;
+}
+
+.authBg::before {
+  top: -240px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(99, 102, 241, 0.35),
+    rgba(2, 132, 199, 0.25),
+    rgba(168, 85, 247, 0.22)
+  );
+}
+
+.authBg::after {
+  bottom: -280px;
+  right: -160px;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(168, 85, 247, 0.25),
+    rgba(99, 102, 241, 0.22),
+    rgba(2, 132, 199, 0.18)
+  );
+}
+
+.authWrap {
+  width: 100%;
+  max-width: 420px;
+  display: grid;
+  gap: 14px;
+}
+
+.authCard {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  border-radius: var(--auth-radius);
+  box-shadow: var(--auth-shadow-md);
+  padding: 22px 18px;
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+@media (min-width: 480px) {
+  .authCard {
+    padding: 26px 22px;
+  }
+}
+
+.authFadeIn {
+  animation: authFadeIn 520ms ease both;
+}
+
+@keyframes authFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.authBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.authBrandMark {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--auth-indigo-500), var(--auth-sky-600));
+  box-shadow: 0 12px 24px rgba(2, 132, 199, 0.14);
+}
+
+.authBrandText {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--auth-slate-900);
+}
+
+.authTitle {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.authSub {
+  margin: 10px 0 0;
+  text-align: center;
+  color: var(--auth-slate-600);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.authForm {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.authLabel {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--auth-slate-700);
+}
+
+.authField {
+  border-radius: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.92);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--auth-shadow-sm);
+  padding: 10px 12px;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.authInput {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--auth-slate-900);
+}
+
+.authInput::placeholder {
+  color: rgba(100, 116, 139, 0.7);
+}
+
+.authField:focus-within {
+  border-color: rgba(99, 102, 241, 0.65);
+  box-shadow: var(--auth-shadow-sm), var(--auth-ring);
+  transform: translateY(-1px);
+}
+
+.authRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.authCheckbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--auth-slate-700);
+  user-select: none;
+}
+
+.authCheckbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--auth-indigo-600);
+}
+
+.authLink {
+  color: var(--auth-sky-700);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.authLink:hover {
+  text-decoration: underline;
+}
+
+.authBtn {
+  margin-top: 4px;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(90deg, var(--auth-indigo-500), var(--auth-sky-600));
+  box-shadow: 0 16px 32px rgba(79, 70, 229, 0.14);
+  transition: transform 140ms ease, opacity 140ms ease, box-shadow 140ms ease;
+}
+
+.authBtn:hover {
+  opacity: 0.96;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(79, 70, 229, 0.18);
+}
+
+.authBtn:active {
+  transform: translateY(-1px);
+}
+
+.authFooterText {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--auth-slate-600);
+}
+
+.authFootnote {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(100, 116, 139, 0.75);
+}
+
+/* Responsive tweaks */
+@media (max-width: 360px) {
+  .authRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .authCard {
+    padding: 20px 16px;
+  }
+}
+
+/* ============================================================
+   THÊM CSS CHO:
+   - Nút thoát ra Home (.authBack)
+   - Nút chuyển Login <-> Register (.authLinkBtn)
+   ============================================================ */
+
+.authBack {
+  width: fit-content;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--auth-slate-700);
+  font-weight: 900;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 9px 12px;
+  border-radius: 999px;
+  box-shadow: var(--auth-shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease,
+    box-shadow 140ms ease;
+  margin-bottom: 10px;
+}
+
+.authBack:hover {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(199, 210, 254, 0.9);
+  transform: translateY(-1px);
+  box-shadow: var(--auth-shadow-md);
+}
+
+.authBack:active {
+  transform: translateY(0);
+}
+
+/* Nút dạng text để chuyển qua lại Login/Register */
+.authLinkBtn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--auth-sky-700);
+  position: relative;
+  transition: color 140ms ease, opacity 140ms ease;
+}
+
+.authLinkBtn:hover {
+  color: var(--auth-sky-600);
+}
+
+.authLinkBtn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--auth-indigo-500), var(--auth-sky-600));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease;
+  opacity: 0.95;
+}
+
+.authLinkBtn:hover::after {
+  transform: scaleX(1);
+}
+
+.authLinkBtn:focus-visible,
+.authBack:focus-visible {
+  outline: none;
+  box-shadow: var(--auth-shadow-sm), var(--auth-ring);
+  border-radius: 999px;
+}

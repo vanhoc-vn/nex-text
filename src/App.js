@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-const App = () => {
-  const count = useSelector(state => state.counter.count);
-  const dispatch = useDispatch();
+import React from "react";
+import Home from "./page/home";
+import Login from "./page/login";
+import Register from "./page/register";
+
+export default function App() {
+  const [route, setRoute] = React.useState("home"); // "home" | "login" | "register"
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>Count = {count}</div>
-        <button onClick={() => dispatch(increaseCounter())}>Increase</button>
-        <button onClick={() => dispatch(decreaseCounter())}>Decrease</button>
-      </header>
-    </div>
+    <>
+      {route === "home" && (
+        <Home
+          onGoLogin={() => setRoute("login")}
+          onGoRegister={() => setRoute("register")}
+        />
+      )}
+
+      {route === "login" && (
+        <Login
+          onGoHome={() => setRoute("home")}
+          onGoRegister={() => setRoute("register")} // login -> register
+        />
+      )}
+
+      {route === "register" && (
+        <Register
+          onGoHome={() => setRoute("home")}
+          onGoLogin={() => setRoute("login")} // register -> login
+        />
+      )}
+    </>
   );
 }
-
-export default App;
