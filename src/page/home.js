@@ -1,7 +1,15 @@
 import React, { useMemo, useState } from "react";
+import logo from "../image/logo.png";
 import "./home.css";
 
-export default function Home({ onGoLogin, onGoRegister }) {
+export default function Home({
+  onGoHome,
+  onGoCourses,
+  onGoTeaching,
+  onGoContact,
+  onGoLogin,
+  onGoRegister,
+}) {
   const [activeTab, setActiveTab] = useState("Thiết kế UI");
   const [openFaq, setOpenFaq] = useState(1);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
@@ -147,7 +155,7 @@ export default function Home({ onGoLogin, onGoRegister }) {
     []
   );
 
-  // NEW: Courses section like image1
+  // Courses preview section in Home
   const courses = useMemo(
     () => [
       {
@@ -276,6 +284,15 @@ export default function Home({ onGoLogin, onGoRegister }) {
       <div className="homeContainer">{children}</div>
     </section>
   );
+
+  const onNavClick = (item) => (e) => {
+    e.preventDefault();
+
+    if (item === "Trang chủ") onGoHome?.();
+    if (item === "Khóa học") onGoCourses?.();
+    if (item === "Giảng dạy") onGoTeaching?.();
+    if (item === "Liên hệ") onGoContact?.();
+  };
 
   const Icon = {
     ArrowRight: (props) => (
@@ -414,11 +431,7 @@ export default function Home({ onGoLogin, onGoRegister }) {
         className={props.className || "homeIcon"}
         aria-hidden="true"
       >
-        <path
-          d="M4 6h16v12H4V6Z"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
+        <path d="M4 6h16v12H4V6Z" stroke="currentColor" strokeWidth="2" />
         <path
           d="m4 7 8 6 8-6"
           stroke="currentColor"
@@ -499,7 +512,6 @@ export default function Home({ onGoLogin, onGoRegister }) {
         <path d="M6.94 6.5A2.44 2.44 0 1 1 6.94 1.6a2.44 2.44 0 0 1 0 4.9ZM2.6 22V8.2h4.7V22H2.6Zm7.8 0V8.2h4.5v1.9h.06c.62-1.18 2.15-2.42 4.43-2.42 4.74 0 5.62 3.12 5.62 7.17V22h-4.7v-6.13c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V22h-4.54Z" />
       </svg>
     ),
-    // NEW: for slider arrow in courses section
     ChevronRightCircle: (props) => (
       <svg
         viewBox="0 0 24 24"
@@ -540,14 +552,32 @@ export default function Home({ onGoLogin, onGoRegister }) {
       {/* 1) Navbar */}
       <header className="homeHeader">
         <div className="homeHeaderInner">
-          <div className="homeBrand">
-            <div className="homeBrandMark">N</div>
+          <button
+            type="button"
+            className="homeBrand"
+            onClick={onGoHome}
+            aria-label="Về Trang chủ"
+            style={{
+              background: "transparent",
+              border: 0,
+              padding: 0,
+              cursor: "pointer",
+            }}
+          >
+            <span className="homeBrandMark" aria-hidden="true">
+              <img src={logo} alt="Nex.edu" className="homeBrandLogo" />
+            </span>
             <span className="homeBrandText">Nex.edu</span>
-          </div>
+          </button>
 
           <nav className="homeNav">
-            {["Tạo CV", "Kỹ năng", "Việc làm đối tác", "Liên hệ"].map((item) => (
-              <a key={item} href="#" className="homeNavLink">
+            {["Trang chủ", "Khóa học", "Giảng dạy", "Liên hệ"].map((item) => (
+              <a
+                key={item}
+                href="#"
+                className="homeNavLink"
+                onClick={onNavClick(item)}
+              >
                 {item}
               </a>
             ))}
@@ -596,14 +626,20 @@ export default function Home({ onGoLogin, onGoRegister }) {
                 <span className="homeSearchIcon">
                   <Icon.Search />
                 </span>
-                <input className="homeInput" placeholder="Ví dụ: UI/UX Designer" />
+                <input
+                  className="homeInput"
+                  placeholder="Ví dụ: UI/UX Designer"
+                />
               </div>
 
               <div className="homeSearchField">
                 <span className="homeSearchIcon">
                   <Icon.Pin />
                 </span>
-                <input className="homeInput" placeholder="Ví dụ: Hà Nội, Việt Nam" />
+                <input
+                  className="homeInput"
+                  placeholder="Ví dụ: Hà Nội, Việt Nam"
+                />
               </div>
 
               <button type="button" className="homeSearchBtn">
@@ -761,7 +797,11 @@ export default function Home({ onGoLogin, onGoRegister }) {
                       Giới thiệu bản thân trong 30 giây
                     </div>
                   </div>
-                  <button type="button" className="homePlayBtn" aria-label="Play">
+                  <button
+                    type="button"
+                    className="homePlayBtn"
+                    aria-label="Play"
+                  >
                     <Icon.Play />
                   </button>
                 </div>
@@ -923,7 +963,11 @@ export default function Home({ onGoLogin, onGoRegister }) {
                   <div className="homePortfolioName">{it.name}</div>
                   <div className="homePortfolioRole">{it.role}</div>
                 </div>
-                <button type="button" className="homePlayBtnSm" aria-label="Play">
+                <button
+                  type="button"
+                  className="homePlayBtnSm"
+                  aria-label="Play"
+                >
                   <Icon.Play />
                 </button>
               </div>
@@ -932,12 +976,17 @@ export default function Home({ onGoLogin, onGoRegister }) {
         </div>
       </Section>
 
-      {/* NEW: Courses section like image1 (below Portfolio nổi bật) */}
+      {/* Courses preview */}
       <Section id="courses" className="homeSectionSpacing">
         <div className="homeCoursesHeader">
           <h2 className="homeH2Left">Các khóa học thịnh hành</h2>
 
-          <button type="button" className="homeCoursesNext" aria-label="Next">
+          <button
+            type="button"
+            className="homeCoursesNext"
+            aria-label="Xem tất cả khóa học"
+            onClick={onGoCourses}
+          >
             <Icon.ChevronRightCircle className="homeCoursesNextIcon" />
           </button>
         </div>
@@ -1040,18 +1089,26 @@ export default function Home({ onGoLogin, onGoRegister }) {
                   >
                     <div className="homeFaqRow">
                       <div className="homeFaqLeft">
-                        <div className={isOpen ? "homeFaqNumOpen" : "homeFaqNum"}>
+                        <div
+                          className={isOpen ? "homeFaqNumOpen" : "homeFaqNum"}
+                        >
                           {String(n).padStart(2, "0")}
                         </div>
                         <div className="homeFaqContent">
                           <div className="homeFaqQ">{item.q}</div>
-                          {isOpen ? <div className="homeFaqA">{item.a}</div> : null}
+                          {isOpen ? (
+                            <div className="homeFaqA">{item.a}</div>
+                          ) : null}
                         </div>
                       </div>
                       <div
-                        className={isOpen ? "homeFaqToggleOpen" : "homeFaqToggle"}
+                        className={
+                          isOpen ? "homeFaqToggleOpen" : "homeFaqToggle"
+                        }
                       >
-                        <span className="homeFaqToggleTxt">{isOpen ? "×" : "+"}</span>
+                        <span className="homeFaqToggleTxt">
+                          {isOpen ? "×" : "+"}
+                        </span>
                       </div>
                     </div>
                   </button>
@@ -1062,7 +1119,9 @@ export default function Home({ onGoLogin, onGoRegister }) {
 
           <div className="homeFaqSide">
             <div className="homeFaqSideCard">
-              <div className="homeFaqSideTitle">Cần hỗ trợ chọn lộ trình phù hợp?</div>
+              <div className="homeFaqSideTitle">
+                Cần hỗ trợ chọn lộ trình phù hợp?
+              </div>
               <p className="homePLeft">
                 Hãy cho chúng tôi biết mục tiêu, chúng tôi sẽ gợi ý kỹ năng và
                 người hướng dẫn.
@@ -1071,7 +1130,11 @@ export default function Home({ onGoLogin, onGoRegister }) {
                 <div className="homeFieldStub">Mục tiêu học</div>
                 <div className="homeFieldStub">Vị trí mong muốn</div>
               </div>
-              <button type="button" className="homeFaqSideBtn">
+              <button
+                type="button"
+                className="homeFaqSideBtn"
+                onClick={onGoContact}
+              >
                 Liên hệ hỗ trợ
               </button>
             </div>
@@ -1084,9 +1147,12 @@ export default function Home({ onGoLogin, onGoRegister }) {
       <Section id="cta" className="homeSectionSpacing">
         <div className="homeCta">
           <div className="homeCenterText">
-            <h3 className="homeH3Big">Tham gia ngay để mở rộng cơ hội nghề nghiệp</h3>
+            <h3 className="homeH3Big">
+              Tham gia ngay để mở rộng cơ hội nghề nghiệp
+            </h3>
             <p className="homeP">
-              Khám phá nhiều cơ hội phù hợp với kỹ năng, sở thích và mục tiêu của bạn.
+              Khám phá nhiều cơ hội phù hợp với kỹ năng, sở thích và mục tiêu của
+              bạn.
             </p>
 
             <div className="homeCtaRow">
@@ -1096,7 +1162,7 @@ export default function Home({ onGoLogin, onGoRegister }) {
                 </span>
                 <input className="homeInput" placeholder="Nhập email của bạn" />
               </div>
-              <button type="button" className="homeJoinBtn">
+              <button type="button" className="homeJoinBtn" onClick={onGoRegister}>
                 Tham gia
               </button>
             </div>
@@ -1110,7 +1176,9 @@ export default function Home({ onGoLogin, onGoRegister }) {
           <div className="homeFooterGrid">
             <div>
               <div className="homeBrand">
-                <div className="homeBrandMark">N</div>
+                <div className="homeBrandMark">
+                  <img src={logo} alt="Nex.edu" className="homeBrandLogo" />
+                </div>
                 <span className="homeBrandText">Nex.edu</span>
               </div>
 
@@ -1120,7 +1188,8 @@ export default function Home({ onGoLogin, onGoRegister }) {
                     <Icon.Map />
                   </span>
                   <span>
-                    Trụ sở: 3787 Jerry Dove Drive, Florence, South Carolina, 29501, Hoa Kỳ.
+                    Trụ sở: 3787 Jerry Dove Drive, Florence, South Carolina,
+                    29501, Hoa Kỳ.
                   </span>
                 </div>
                 <div className="homeInfoRow">
@@ -1141,9 +1210,9 @@ export default function Home({ onGoLogin, onGoRegister }) {
             <div>
               <div className="homeFooterTitle">Liên kết nhanh</div>
               <ul className="homeFooterLinks">
-                {["Bảng giá", "Việc làm", "Nhà tuyển dụng", "Tuyển dụng", "Liên hệ"].map((l) => (
+                {["Trang chủ", "Khóa học", "Giảng dạy", "Liên hệ"].map((l) => (
                   <li key={l}>
-                    <a href="#" className="homeFooterLink">
+                    <a href="#" className="homeFooterLink" onClick={onNavClick(l)}>
                       {l}
                     </a>
                   </li>
@@ -1154,9 +1223,14 @@ export default function Home({ onGoLogin, onGoRegister }) {
             <div>
               <div className="homeFooterTitle">Khác</div>
               <ul className="homeFooterLinks">
-                {["Cách hoạt động", "Điều khoản", "Chính sách bảo mật", "Giới thiệu"].map((l) => (
+                {[
+                  "Cách hoạt động",
+                  "Điều khoản",
+                  "Chính sách bảo mật",
+                  "Giới thiệu",
+                ].map((l) => (
                   <li key={l}>
-                    <a href="#" className="homeFooterLink">
+                    <a href="#" className="homeFooterLink" onClick={(e) => e.preventDefault()}>
                       {l}
                     </a>
                   </li>
@@ -1167,9 +1241,14 @@ export default function Home({ onGoLogin, onGoRegister }) {
             <div>
               <div className="homeFooterTitle">Về chúng tôi</div>
               <ul className="homeFooterLinks">
-                {["Cột mốc", "Web mail", "Hội đồng quản trị", "Ban lãnh đạo"].map((l) => (
+                {[
+                  "Cột mốc",
+                  "Web mail",
+                  "Hội đồng quản trị",
+                  "Ban lãnh đạo",
+                ].map((l) => (
                   <li key={l}>
-                    <a href="#" className="homeFooterLink">
+                    <a href="#" className="homeFooterLink" onClick={(e) => e.preventDefault()}>
                       {l}
                     </a>
                   </li>
@@ -1184,13 +1263,28 @@ export default function Home({ onGoLogin, onGoRegister }) {
             </div>
 
             <div className="homeSocial">
-              <a href="#" className="homeSocialBtn" aria-label="Twitter">
+              <a
+                href="#"
+                className="homeSocialBtn"
+                aria-label="Twitter"
+                onClick={(e) => e.preventDefault()}
+              >
                 <Icon.Twitter />
               </a>
-              <a href="#" className="homeSocialBtn" aria-label="LinkedIn">
+              <a
+                href="#"
+                className="homeSocialBtn"
+                aria-label="LinkedIn"
+                onClick={(e) => e.preventDefault()}
+              >
                 <Icon.Linkedin />
               </a>
-              <a href="#" className="homeSocialBtn" aria-label="GitHub">
+              <a
+                href="#"
+                className="homeSocialBtn"
+                aria-label="GitHub"
+                onClick={(e) => e.preventDefault()}
+              >
                 <Icon.Github />
               </a>
             </div>

@@ -184,14 +184,18 @@
   border-radius: 14px;
   display: grid;
   place-items: center;
-  color: white;
-  font-weight: 700;
-  background: linear-gradient(
-    135deg,
-    var(--home-indigo-500),
-    var(--home-sky-600)
-  );
-  box-shadow: 0 12px 24px rgba(2, 132, 199, 0.14);
+
+  /* đổi nền */
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: var(--home-shadow-sm);
+  color: var(--home-slate-900);
+}
+.homeBrandLogo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
 }
 .homeBrandText {
   font-size: 18px;
@@ -1918,3 +1922,10 @@
     font-size: 15px;
   }
 }
+
+/* .homeBrandLogo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+} */
