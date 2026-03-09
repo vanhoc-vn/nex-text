@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import "./page/courses.css";
+import "./courses.css";
 
 export default function Courses({ onGoHome }) {
   const categories = useMemo(

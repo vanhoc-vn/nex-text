@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import logo from "../image/logo.png";
+import logo from "../../image/logo.png";
 import "./home.css";
 
 export default function Home({
@@ -42,12 +42,12 @@ export default function Home({
       {
         name: "Quynh Trang",
         role: "Frontend",
-        img: "https://images.unsplash.com/photo-1520975958225-6c1f6cfc1f5e?auto=format&fit=crop&w=600&q=80",
+        img: "https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/Anh-avatar-hoat-hinh-de-thuong-xinh-xan.jpg?1704788263223",
       },
       {
-        name: "Mia Bennett",
+        name: "Thu Thảo",
         role: "Marketing",
-        img: "https://images.unsplash.com/photo-1524503033411-f0ce9a9e3a1b?auto=format&fit=crop&w=600&q=80",
+        img: "https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/tong-hop-avatar-facebook-dep-nhat.jpg?1704937487183",
       },
       {
         name: "Phuong Uyen",
@@ -137,18 +137,18 @@ export default function Home({
   const portfolio = useMemo(
     () => [
       {
-        name: "Floyd Miles",
-        role: "Thiết kế đồ hoạ",
+        name: "Phạm Thiên Thiên",
+        role: "Kịch bản ngôi nhà hạnh phúc",
         img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80",
       },
       {
-        name: "Brooklyn Simmons",
-        role: "Thiết kế UI/UX",
+        name: "Nguyễn Thị Linh",
+        role: "Dự án nuôi em ",
         img: "https://images.unsplash.com/photo-1526481280695-3c687fd5432c?auto=format&fit=crop&w=1600&q=80",
       },
       {
-        name: "Wade Warren",
-        role: "Lập trình viên",
+        name: "Đoàn Quang Thắng",
+        role: "Xây dựng trang web quản lý thời gian",
         img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
       },
     ],
@@ -219,23 +219,23 @@ export default function Home({
       {
         quote:
           "Trải nghiệm sử dụng rất mượt, từ lúc tìm kiếm đến lúc kết nối đều dễ dàng.",
-        name: "Manuel Rikobo",
+        name: "Lê Sinh Cung",
         title: "Giám đốc điều hành",
         img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80",
       },
       {
         quote:
           "Nền tảng giúp tìm đúng người nhanh và xây dựng đội nhóm làm việc hiệu quả.",
-        name: "Sarah Conner",
+        name: "Trần Hữu Quốc",
         title: "Trưởng bộ phận tuyển dụng",
-        img: "https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=1600&q=80",
+        img: "https://cdnportal.vnu.edu.vn/data/upload/2018/12/23326/image/Nguyen%20Van%20Anh.jpg",
       },
       {
         quote:
           "Giao diện đẹp, hồ sơ rõ ràng và quy trình liên hệ rất thuận tiện.",
-        name: "Daniel Lee",
+        name: "Phạm Thị Thành",
         title: "Trưởng nhóm sản phẩm",
-        img: "https://images.unsplash.com/photo-1520975958225-6c1f6cfc1f5e?auto=format&fit=crop&w=1600&q=80",
+        img: "data:image/jpeg;base64,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",
       },
     ],
     []
@@ -567,7 +567,7 @@ export default function Home({
             <span className="homeBrandMark" aria-hidden="true">
               <img src={logo} alt="Nex.edu" className="homeBrandLogo" />
             </span>
-            <span className="homeBrandText">Nex.edu</span>
+            <span className="homeBrandText">NEX EDU</span>
           </button>
 
           <nav className="homeNav">
@@ -611,13 +611,13 @@ export default function Home({
           </div>
 
           <h1 className="homeHeroTitle">
-            Thể hiện kỹ năng của bạn.{" "}
+            Học hỏi kỹ năng.{" "}
             <span className="homeHeroTitleAccent">Kết nối cơ hội</span>
           </h1>
 
           <p className="homeHeroSub">
-            Tạo hồ sơ, giới thiệu kỹ năng và để nhà tuyển dụng tìm thấy bạn. Tìm
-            cơ hội, kết nối đội nhóm và phát triển sự nghiệp nhanh hơn.
+            Giới thiệu kỹ năng, tạo hồ sơ và để nhà tuyển dụng tìm thấy bạn. Tìm
+            cơ hội, phát triển sự nghiệp nhanh hơn.
           </p>
 
           <div className="homeSearchShell">
@@ -647,21 +647,6 @@ export default function Home({
               </button>
             </div>
           </div>
-        </div>
-
-        <div className="homeAvatarGrid">
-          {heroAvatars.map((u) => (
-            <div key={u.name} className="homeAvatarCard">
-              <div className="homeAvatarCardInner">
-                <img src={u.img} alt={u.name} className="homeAvatarImg" />
-                <div className="homeAvatarMeta">
-                  <div className="homeAvatarName">{u.name}</div>
-                  <div className="homeAvatarRole">{u.role}</div>
-                </div>
-              </div>
-              <div className="homeAvatarGlow" />
-            </div>
-          ))}
         </div>
       </Section>
 
@@ -740,110 +725,6 @@ export default function Home({
         </div>
       </Section>
 
-      {/* 4) Why */}
-      <Section id="why" className="homeSectionSpacing">
-        <div className="homeCenterText">
-          <h2 className="homeH2">
-            Vì sao chọn <span className="homeH2Strong">nền tảng này</span>?
-          </h2>
-          <p className="homeP">
-            Mở rộng cơ hội phù hợp với kỹ năng và mục tiêu của bạn.
-          </p>
-        </div>
-
-        <div className="homeWhyWrap">
-          <div className="homeWhyGrid">
-            <div className="homeWhyCol">
-              <div className="homeMiniCard">
-                <div className="homeMiniCardTop">
-                  <div className="homeMiniIcon homeMiniIconIndigo">
-                    <Icon.Check />
-                  </div>
-                  <span className="homeChip">Nổi bật</span>
-                </div>
-                <h3 className="homeH3">Trưng bày dự án</h3>
-                <p className="homeSmallP">Đưa dự án lên để nổi bật hơn.</p>
-                <button type="button" className="homeBtnSkyPill">
-                  Thêm dự án
-                </button>
-              </div>
-
-              <div className="homeMiniCard">
-                <div className="homeStatRow">
-                  <div className="homeMiniIcon homeMiniIconSky">
-                    <Icon.Check />
-                  </div>
-                  <div>
-                    <div className="homeStatNum">100K+</div>
-                    <div className="homeSmallP">Người dùng đang hoạt động</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="homeVideoCol">
-              <div className="homeVideoGlow" />
-              <div className="homeVideoCard">
-                <img
-                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80"
-                  alt="CV video"
-                  className="homeVideoImg"
-                />
-                <div className="homeVideoOverlay" />
-                <div className="homeVideoFooter">
-                  <div>
-                    <div className="homeVideoTitle">CV video</div>
-                    <div className="homeVideoSub">
-                      Giới thiệu bản thân trong 30 giây
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    className="homePlayBtn"
-                    aria-label="Play"
-                  >
-                    <Icon.Play />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="homeWhyCol">
-              <div className="homeMiniCard">
-                <div className="homeStatRow">
-                  <div className="homeMiniIcon homeMiniIconIndigo">
-                    <Icon.Check />
-                  </div>
-                  <div>
-                    <div className="homeH3">Cơ hội kết nối</div>
-                    <div className="homeSmallP">Gặp nhà tuyển dụng và cộng sự</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="homeMiniCard">
-                <div className="homeMiniCardTop">
-                  <div className="homeMiniIcon homeMiniIconSky">
-                    <Icon.Check />
-                  </div>
-                  <span className="homeChip">Pro</span>
-                </div>
-                <h3 className="homeH3">Tạo CV</h3>
-                <p className="homeSmallP">
-                  Tạo CV chuyên nghiệp bằng công cụ có sẵn.
-                </p>
-                <button type="button" className="homeBtnSkyPill">
-                  Tạo CV
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="homeRing homeRing1" />
-          <div className="homeRing homeRing2" />
-        </div>
-      </Section>
-
       {/* 5) How it works */}
       <Section id="how" className="homeSectionSpacing">
         <div className="homeHowGrid">
@@ -854,19 +735,19 @@ export default function Home({
                 {
                   step: "01",
                   title: "Đăng ký và tạo tài khoản",
-                  desc: "Điền thông tin và thêm kỹ năng của bạn.",
+                  desc: "Điền thông tin và thêm kỹ năng muốn học  .",
                   tone: "homeGradIndigoSky",
                 },
                 {
                   step: "02",
-                  title: "Tải portfolio của bạn",
+                  title: "Mua khóa học kĩ năng cùng giảng viên",
                   desc: "Thêm CV, video và dự án nổi bật.",
                   tone: "homeGradAmberRose",
                 },
                 {
                   step: "03",
                   title: "Được tìm thấy",
-                  desc: "Để nhà tuyển dụng tìm và liên hệ với bạn.",
+                  desc: "Nhà tuyển dụng tìm và liên hệ với bạn.",
                   tone: "homeGradVioletIndigo",
                 },
               ].map((it) => (
@@ -1188,21 +1069,20 @@ export default function Home({
                     <Icon.Map />
                   </span>
                   <span>
-                    Trụ sở: 3787 Jerry Dove Drive, Florence, South Carolina,
-                    29501, Hoa Kỳ.
+                    Trụ sở: 470 Trần Đại Nghĩa, Phường Hòa Quý, thành phố Đà Nẵng.
                   </span>
                 </div>
                 <div className="homeInfoRow">
                   <span className="homeInfoIcon">
                     <Icon.Phone />
                   </span>
-                  <span>Điện thoại: +843-496-7759</span>
+                  <span>Điện thoại: +84889020611</span>
                 </div>
                 <div className="homeInfoRow">
                   <span className="homeInfoIcon">
                     <Icon.Mail />
                   </span>
-                  <span>Email: hello@nex.edu</span>
+                  <span>Email: hoclv.04@gmail.com</span>
                 </div>
               </div>
             </div>
