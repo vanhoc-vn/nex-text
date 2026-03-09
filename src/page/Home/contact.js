@@ -103,13 +103,13 @@ export default function Contact({ onGoHome }) {
                 <div className="contactInfoRow">
                   <div className="contactInfoKey">Địa chỉ</div>
                   <div className="contactInfoVal">
-                    3787 Jerry Dove Drive, Florence, South Carolina, 29501, Hoa Kỳ.
+                    470 Trần Đại Nghĩa, phường Hòa Quý, Thành phố Đà Nẵng.
                   </div>
                 </div>
 
                 <div className="contactInfoRow">
                   <div className="contactInfoKey">Điện thoại</div>
-                  <div className="contactInfoVal">+843-496-7759</div>
+                  <div className="contactInfoVal">+8482342784</div>
                 </div>
 
                 <div className="contactInfoRow">
@@ -124,12 +124,9 @@ export default function Contact({ onGoHome }) {
                   <div className="contactInfoKey">Thứ 2 - Thứ 6</div>
                   <div className="contactInfoVal">08:30 - 17:30</div>
                 </div>
+
                 <div className="contactInfoRow">
-                  <div className="contactInfoKey">Thứ 7</div>
-                  <div className="contactInfoVal">08:30 - 12:00</div>
-                </div>
-                <div className="contactInfoRow">
-                  <div className="contactInfoKey">Chủ nhật</div>
+                  <div className="contactInfoKey">T7 - Chủ nhật</div>
                   <div className="contactInfoVal">Nghỉ</div>
                 </div>
               </div>

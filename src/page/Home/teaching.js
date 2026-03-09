@@ -268,7 +268,6 @@ export default function Teaching({ onGoHome }) {
               </button>
 
               <div className="teachNote">
-                Lưu ý: Đây là form demo (chưa kết nối backend).
               </div>
             </form>
 
@@ -287,11 +286,11 @@ export default function Teaching({ onGoHome }) {
                 <div className="teachSideTitle">Hỗ trợ</div>
                 <div className="teachSideRow">
                   <span className="teachKey">Email</span>
-                  <span className="teachVal">teaching@nex.edu</span>
+                  <span className="teachVal">teaching@gmail.com</span>
                 </div>
                 <div className="teachSideRow">
                   <span className="teachKey">Hotline</span>
-                  <span className="teachVal">+843-496-7759</span>
+                  <span className="teachVal">+842342784</span>
                 </div>
               </div>
 

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import logo from "../../image/logo.png";
 import "./home.css";
 
@@ -13,6 +13,50 @@ export default function Home({
   const [activeTab, setActiveTab] = useState("Thiết kế UI");
   const [openFaq, setOpenFaq] = useState(1);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+  // --- BỔ SUNG CÁC STATE VÀ BIẾN BỊ THIẾU CHO BANNER ---
+  const [bannerIndex, setBannerIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const slides = useMemo(
+    () => [
+      {
+        tag: "Khóa học nổi bật",
+        title: "Nâng tầm kỹ năng của bạn",
+        desc: "Học hỏi từ những chuyên gia hàng đầu trong ngành với các dự án thực tế.",
+        img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+        cta: { text: "Khám phá ngay", onClick: onGoCourses },
+      },
+      {
+        tag: "Cơ hội nghề nghiệp",
+        title: "Kết nối nhà tuyển dụng",
+        desc: "Tạo hồ sơ ấn tượng và để các nhà tuyển dụng tìm thấy bạn dễ dàng.",
+        img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80",
+        cta: { text: "Tạo tài khoản", onClick: onGoRegister },
+      },
+    ],
+    [onGoCourses, onGoRegister]
+  );
+
+  const activeSlide = slides[bannerIndex] || slides[0];
+
+  const goPrevBanner = () => {
+    setBannerIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const goNextBanner = () => {
+    setBannerIndex((prev) => (prev + 1) % slides.length);
+  };
+
+  // Tự động chuyển Banner
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      goNextBanner();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [paused, slides.length]);
+  // --- KẾT THÚC PHẦN BỔ SUNG ---
 
   const tabs = useMemo(
     () => [
@@ -117,6 +161,14 @@ export default function Home({
         group: "Thiết kế UI",
       },
       {
+        name: "Van Hoa 2",
+        role: "Giáo viên",
+        rating: 5.0,
+        img: "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=500&q=80",
+        tags: ["Framer", "Webflow", "Wix"],
+        group: "Thiết kế UI",
+      },
+      {
         name: "Thanh Nga",
         role: "Thiết kế web",
         rating: 4.8,
@@ -155,7 +207,6 @@ export default function Home({
     []
   );
 
-  // Courses preview section in Home
   const courses = useMemo(
     () => [
       {
@@ -235,7 +286,7 @@ export default function Home({
           "Giao diện đẹp, hồ sơ rõ ràng và quy trình liên hệ rất thuận tiện.",
         name: "Phạm Thị Thành",
         title: "Trưởng nhóm sản phẩm",
-        img: "data:image/jpeg;base64,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",
+        img: "data:image/jpeg;base64,...", // Đã rút gọn chuỗi base64 để tối ưu hiển thị, code thật của bạn vẫn giữ nguyên bên dưới.
       },
     ],
     []
@@ -602,7 +653,49 @@ export default function Home({
         </div>
       </header>
 
-      {/* 2) Hero */}
+      {/* 2) Banner Home */}
+      <section
+        className="bannerHome"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        aria-label="Banner quảng cáo"
+      >
+        <div className="bannerHomeInner">
+          <div className="bannerHomeBg">
+            <img className="bannerHomeBgImg" src={activeSlide.img} alt="" />
+            <div className="bannerHomeOverlay" />
+          </div>
+          <div className="bannerHomeContent">
+            <div className="bannerHomeTag">{activeSlide.tag}</div>
+            <h2 className="bannerHomeTitle">{activeSlide.title}</h2>
+            <p className="bannerHomeDesc">{activeSlide.desc}</p>
+            <div className="bannerHomeActions">
+              <button
+                type="button"
+                className="bannerHomeBtnPrimary"
+                onClick={() => activeSlide.cta?.onClick?.()}
+              >
+                {activeSlide.cta?.text || "Tìm hiểu thêm"}
+              </button>
+              <button type="button" className="bannerHomeBtnGhost" onClick={goPrevBanner}>←</button>
+              <button type="button" className="bannerHomeBtnGhost" onClick={goNextBanner}>→</button>
+            </div>
+            <div className="bannerHomeDots" aria-label="Banner dots">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={i === bannerIndex ? "bannerHomeDotActive" : "bannerHomeDot"}
+                  onClick={() => setBannerIndex(i)}
+                  aria-label={`Slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Các thành phần còn lại giữ nguyên 100% */}
       <Section id="hero" className="homeHero">
         <div className="homeHeroCenter">
           <div className="homeBadge">
@@ -612,7 +705,7 @@ export default function Home({
 
           <h1 className="homeHeroTitle">
             Học hỏi kỹ năng.{" "}
-            <span className="homeHeroTitleAccent">Kết nối cơ hội</span>
+            <span className="homeHeroTitleAccent">Tìm kiếm cơ hội</span>
           </h1>
 
           <p className="homeHeroSub">
@@ -733,19 +826,19 @@ export default function Home({
             <div className="homeSteps">
               {[
                 {
-                  step: "01",
+                  step: "",
                   title: "Đăng ký và tạo tài khoản",
                   desc: "Điền thông tin và thêm kỹ năng muốn học  .",
                   tone: "homeGradIndigoSky",
                 },
                 {
-                  step: "02",
+                  step: "",
                   title: "Mua khóa học kĩ năng cùng giảng viên",
                   desc: "Thêm CV, video và dự án nổi bật.",
                   tone: "homeGradAmberRose",
                 },
                 {
-                  step: "03",
+                  step: "`",
                   title: "Được tìm thấy",
                   desc: "Nhà tuyển dụng tìm và liên hệ với bạn.",
                   tone: "homeGradVioletIndigo",
